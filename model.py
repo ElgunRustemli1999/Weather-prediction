@@ -65,7 +65,7 @@ def model_pred(city):
     df_y = df_y[-40:]
 
     # Zaman penceresi oluştur
-    X_data, y_data, time_steps = functions.create_timewindow(df_x, df_y, time_steps=7)
+    X_data, y_data, time_steps = functions.create_timewindow(df_x, df_y, time_steps=5)
 
     # Tahmin yap
     true_y_train, true_y_train_pred = functions.model_pred(model, X_data, y_data, scaler_y)
