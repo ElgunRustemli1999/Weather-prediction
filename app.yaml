@@ -1,0 +1,16 @@
+runtime: python310  # Python sürümünü belirtin
+entrypoint: gunicorn -b :$PORT app:app  # Flask uygulamanızın başlatılma komutu
+
+instance_class: F2  # Uygulamanızın kaynak gereksinimlerine göre sınıf seçin
+
+env_variables:
+  # GitHub'dan çekilecek model ve veri dosyalarının URL'lerini çevresel değişken olarak tanımlayın
+  MODEL_URL: 'https://raw.githubusercontent.com/ElgunRustemli1999/weather-prediction/main/models/{city}_data_model.keras'
+  DATA_URL: 'https://raw.githubusercontent.com/ElgunRustemli1999/weather-prediction/main/data/{city}_data.csv'
+
+handlers:
+  - url: /static  # Statik dosyalar için handler
+    static_dir: static  # Flask'ın static dizini
+
+  - url: /.*  # Flask uygulamanıza tüm gelen istekler yönlendirilecek
+    script: auto  # Flask uygulaması otomatik olarak yönlendirilecek
