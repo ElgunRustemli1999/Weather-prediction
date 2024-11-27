@@ -29,8 +29,8 @@ def model_pred(city):
     data_url = f'https://raw.githubusercontent.com/ElgunRustemli1999/weather-prediction/main/data/{city}_data.csv'
 
     # Geçici dosya yolları
-    model_path = '/tmp/city_data_model.keras'
-    data_path = '/tmp/city_data.csv'
+    model_path = f'/tmp/{city}_data_model.keras'
+    data_path = f'/tmp/{city}_data.csv'
 
     # Dosyaları indir
     download_file(model_url, model_path)
@@ -38,12 +38,14 @@ def model_pred(city):
 
     # Modeli yükle
     if os.path.exists(model_path):
+        global model
         model = load_model(model_path)
     else:
         raise FileNotFoundError("Model dosyası bulunamadı.")
 
     # Veriyi yükle ve işle
     if os.path.exists(data_path):
+        global data
         data = functions.load_and_preprocess(data_path)
     else:
         raise FileNotFoundError("Veri dosyası bulunamadı.")
