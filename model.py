@@ -20,8 +20,8 @@ def model_pred(city):
             file.write(response.content)
 
     # Model URL ve veri URL'lerini GitHub'dan alın
-    model_url = f'https://github.com/ElgunRustemli1999/weather-prediction/tree/main/models/{city}_data_model.keras'
-    data_url = f'https://github.com/ElgunRustemli1999/weather-prediction/tree/main/data/{city}_data.csv'
+    model_url = f'https://raw.githubusercontent.com/ElgunRustemli1999/weather-prediction/tree/main/models/{city}_data_model.keras'
+    data_url = f'https://raw.githubusercontent.com/ElgunRustemli1999/weather-prediction/tree/main/data/{city}_data.csv'
 
     # Dosyaların Heroku geçici dizinine indirilmesi
     model_path = '/tmp/city_data_model.keras'
